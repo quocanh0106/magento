@@ -1,0 +1,10 @@
+<div class="container">
+    <form method='POST' action="<?php echo $this->getUrl("crud/post/save")?>">
+        <div class="form-group">
+            <label for="name"><b>Name</b></label>
+            <input type="text" class="form-control" id="name" placeholder="Enter a name" name="name" value="<?php $post = $block->getPost(); echo $post->getName(); ?>">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" name="editbtn" value="<?php if (isset($post['id'])) echo $post->getId();?>">Submit</button>
+    </form>
+</div>

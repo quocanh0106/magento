@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @var \AHT\Crud\Block\Index $block
+ */
+
+?>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    .edit:link, .edit:visited,
+    .delete:link, .delete:visited {
+        color: white;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .edit:link, .edit:visited {
+        background-color: #2489cc;
+    }
+
+    .delete:link, .delete:visited {
+        background-color: #f44336;
+    }
+
+    .edit:hover, .edit:active {
+        background-color: #006bb4;
+    }
+
+    .delete:hover, .delete:active {
+        background-color: red;
+    }
+</style>
+<h1>Posts</h1>
+
+<div>
+    <a class="edit" href="<?php echo $this->getUrl("crud/post/create")?>" rel="noopener noreferrer">Add a Post</a>
+</div> <br>
+
+<table>
+    <tr>
+        <th class="post-id">Id</th>
+        <th class="post-name">Name</th>
+        <th>action</th>
+    </tr>
+    <?php
+    foreach ($block->getPosts() as $post) {
+        echo '<tr>
+                    <td>' . $post->getId()   . '</td>
+                    <td>' . $post->getName() . '</td>
+                    <td>
+                        <a class="edit" href="'.$block->getUrl('crud/post/edit/'). 'id/' . $post->getId().'" target="_blank">Edit</a>
+                        <a class="delete" href="'.$block->getUrl('crud/post/delete/'). 'id/' . $post->getId().'"  onclick=\'return confirm("are u sure")\' >Delete</a>
+                    </td>
+              </tr>';
+    }
+    ?>
+</table>
+
+</body>
+</html>
